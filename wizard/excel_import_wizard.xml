@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.menu" id="crm.crm_menu_config">
+        <field name="groups_id" eval="[(4,ref('base_group.marketing_officer_group')),(4,ref('base_group.marketing_manager_group'))]"/>
+    </record>
+    <record model="ir.ui.menu" id="base_group.menu_import_wizard" >
+        <field name="name">menu_import_wizard</field>
+        <field name="groups_id" eval="[(4,ref('base_group.marketing_officer_group')),(4,ref('base_group.marketing_manager_group'))]"/>
+    </record>
+
+    <record model="ir.ui.view" id="base_group.view_import_wizard">
+        <field name="name">view_import_wizard</field>
+        <field name="model">excel.import.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="excel_import_wizard">
+                <group col="4">
+
+                    <field name="excel" string="文件"/>
+                    <field name="batch_id" string="批次"/>
+    
+                </group>
+                <footer>
+
+                    <button name="do_import" string="导入" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="base_group.action_excel_import_wizard">
+        <field name="name">导入工具</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">excel.import.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <menuitem name="导入向导" id="base_group.menu_excel_import_wizard" action="base_group.action_excel_import_wizard" parent="crm.crm_menu_config" sequence="0"/>
+
+</odoo>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="base_group.view_import_wizard">
+        <field name="name">lead_report_wizard</field>
+        <field name="model">lead_report.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="线索报告生成">
+                <group col="4">
+                    <field name="batch_id" string="批次"/> 
+                </group>
+                <footer>
+                    <button name="gen_report" string="生成报告" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="base_group.action_lead_report_wizard">
+        <field name="name">线索报告</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lead_report.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <menuitem name="生成线索报告" id="base_group.menu_import_wizard" action="base_group.action_lead_report_wizard" parent="crm.crm_menu_report" sequence="0"/>
+
+</odoo>
+

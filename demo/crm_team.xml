@@ -1,0 +1,43 @@
+<odoo>
+    <data noupdate="0" >
+        <record id="t1" model="crm.team">
+            <field name="name">招商一部A组</field>
+            <field name="use_opportunities">1</field>
+            <field name="use_leads">1</field>
+            <field name="member_ids" eval="[(6,0,[u11001,u11002,u11003,u11004,u11005,u11006,u11007,u11008,u11009,u11010])]"/>
+            <field name="user_id" eval="ref('base_group.u11002')"/>
+            <field name="depart_id" eval="ref('base_group.ed1')"/>
+            <field name="team_type">sales</field>
+        </record>
+        <record id="t2a" model="crm.team">
+            <field name="name">招商二部A组</field>
+            <field name="use_opportunities">1</field>
+            <field name="use_leads">1</field>
+            <field name="member_ids" eval="[(6,0,[u12001,u12002,u12010,u12008,u12009,u12004])]"/>
+            <field name="user_id" eval="ref('base_group.u12002')"/>
+            <field name="depart_id" eval="ref('base_group.ed2')"/>
+            <field name="team_type">sales</field>
+        </record>
+        <record id="t2b" model="crm.team">
+            <field name="name">招商二部B组</field>
+            <field name="use_opportunities">1</field>
+            <field name="use_leads">1</field>
+            <field name="member_ids" eval="[(6,0,[u12005,u12003,u12006,u12007])]"/>
+            <field name="user_id" eval="ref('base_group.u12005')"/>
+            <field name="depart_id" eval="ref('base_group.ed2')"/>
+            <field name="team_type">sales</field>
+        </record>
+
+        <record id="t4" model="crm.team">
+            <field name="name">招商三部A组</field>
+            <field name="use_opportunities">1</field>
+            <field name="use_leads">1</field>
+            <field name="member_ids" eval="[(6,0,[u13001,u13002,u13003,u13004,u13005,u13006,u13007,u13008,u13009,u13010])]"/>
+            <field name="user_id" eval="ref('base_group.u13002')"/>
+            <field name="depart_id" eval="ref('base_group.ed3')"/>
+            <field name="team_type">sales</field>
+        </record>
+
+
+    </data>
+</odoo>

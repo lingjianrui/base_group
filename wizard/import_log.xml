@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.menu" id="base_group.menu_import_log">
+        <field name="name">操作日志</field>
+        <field name="groups_id" eval="[(4,ref('base_group.marketing_manager_group'))]"/>
+    </record>
+    <record model="ir.ui.view" id="base_group.view_import_log">
+        <field name="name">view_import_log</field>
+        <field name="model">import.log</field>
+        <field name="arch" type="xml">
+            <tree create="false" string="Import Logs">
+                <field name="name"/>
+                <field name="status"/>
+                <field name="opt_time"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="base_group.action_import_log">
+        <field name="name">操作日志</field>
+        <field name="res_model">import.log</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem name="操作日志" id="base_group.menu_import_log" action="base_group.action_import_log" parent="crm.crm_menu_config" sequence="0"/>
+
+</odoo>
+

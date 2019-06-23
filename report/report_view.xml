@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<odoo>
+  <data>
+       <record id="paperformat_lead_report" model="report.paperformat">
+           <field name="name">European A4 low margin</field>
+           <field name="default" eval="True"/>
+           <field name="format">custom</field>
+           <field name="page_height">600</field>
+           <field name="page_width">480</field>
+           <field name="orientation">Portrait</field>
+           <field name="margin_top">20</field>
+           <field name="margin_bottom">20</field>
+           <field name="margin_left">50</field>
+           <field name="margin_right">50</field>
+           <field name="header_line" eval="False"/>
+           <field name="header_spacing">0</field>
+           <field name="dpi">400</field>
+        </record>
+        <report
+            id="base_group.report_lead_report"
+            string="线索报表"
+            model="crm.lead"
+            report_type="qweb-html"
+            file="base_group.templete_lead_report"
+            name="base_group.template_lead_report"
+            paperformat="paperformat_lead_report"
+        />
+  </data>
+</odoo>
+-->
+<odoo>
+    <data>
+        <report
+            id="lead_report"
+            model="report.base_group.template_lead_report"
+            string="信息部线索报告"
+            report_type="qweb-html"
+            name="base_group.template_lead_report"
+            file="base_group.template_lead_report"
+            />
+        <report
+            id="opportunity_report"
+            model="report.base_group.template_opportunity_report"
+            string="招商部商机报告"
+            report_type="qweb-html"
+            name="base_group.template_opportunity_report"
+            file="base_group.template_opportunity_report"
+            />
+
+        <record model="ir.actions.act_url" id="action_lead_report_url">
+            <field name="name">信息部线索报告</field>
+            <field name="url">http://work.xlcsm.net/report/html/base_group.template_lead_report</field>
+            <field name="target">new</field>
+        </record>
+        <record model="ir.actions.act_url" id="action_opportunity_report_url">
+            <field name="name">招商部商机报告</field>
+            <field name="url">http://work.xlcsm.net/report/html/base_group.template_opportunity_report</field>
+            <field name="target">new</field>
+        </record>
+        <record id="action_home_page" model="ir.actions.client">
+            <field name="name">Pet Store Home</field>
+            <field name="tag">abc</field>
+        </record>
+
+        <menuitem name="信息部线索报告Test" id="base_group.menu_lead_report_test" action="action_home_page" parent="crm.crm_menu_report" sequence="100"/>
+        <menuitem name="信息部线索报告" id="base_group.menu_lead_report" action="action_lead_report_url" parent="crm.crm_menu_report" sequence="0"/>
+        <menuitem name="招商部商机报告" id="base_group.menu_opportunity_report" action="action_opportunity_report_url" parent="crm.crm_menu_report" sequence="0"/>
+
+
+    </data>
+</odoo>

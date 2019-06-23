@@ -1,0 +1,30 @@
+<odoo>
+    <data noupdate="1" >
+        
+        <record id="8001" model="hr.job">
+            <field name="name">招商经理</field>
+            <field name="department_id" eval="ref('base_group.4001')"/>
+        </record>
+        <record id="8002" model="hr.job">
+            <field name="name">招商总监</field>
+            <field name="department_id" eval="ref('base_group.4001')"/>
+        </record>
+        <record id="8003" model="hr.job">
+            <field name="name">信息部主管</field>
+            <field name="department_id" eval="ref('base_group.4000')"/>
+        </record>
+        <record id="8004" model="hr.job">
+            <field name="name">信息部员工</field>
+            <field name="department_id" eval="ref('base_group.4000')"/>
+        </record>
+        <record id="80000" model="hr.job">
+            <field name="name">董事长</field>
+            <field name="department_id" eval="ref('base_group.40000')"/>
+        </record>
+        <record id="80001" model="hr.job">
+            <field name="name">招商部VP</field>
+            <field name="department_id" eval="ref('base_group.40000')"/>
+        </record>
+
+    </data>
+</odoo>

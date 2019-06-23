@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <template id="template_opportunity_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page" style="padding:100 100 0 0">
+                        <div class="oe_structure"/>
+                        <table  class="table table-sm" style="border-bottom: 0px solid white !important;">
+                            <thead>
+                                <tr>
+                                    <th>东方幸福总监月报表</th>
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="result" t-as="report"> 
+                                <tr>
+                                    <td>部门名称:<t t-esc="report['部门名称']"/></td>
+                                    <td>报表人:<t t-esc="report['部门负责人']"/></td>
+                                    <td>日期:<t t-esc="date_start"/>到<t t-esc="date_end"/></td>
+                                </tr>
+                                <tr>
+                                    <td>年签约目标</td><td><t t-esc="report['年签约目标']"/>万</td>
+                                    <td>年签约完成:</td><td><t t-esc="report['年签约完成']"/>万</td>
+                                    <td>完成比例</td><td><t t-esc="report['年签约完成比例']"/>%</td>
+                                </tr>
+                                <tr>
+                                    <td>年回款目标</td><td><t t-esc="report['年回款目标']"/>万</td>
+                                    <td>年回款完成</td><td><t t-esc="report['年回款完成']"/>万</td>
+                                    <td>完成比例</td><td><t t-esc="report['年回款完成比例']"/>%</td>
+                                </tr>
+                                <tr>
+                                    <td>年邀约目标</td><td><t t-esc="report['年邀约目标']"/>波</td>
+                                    <td>年邀约完成</td><td><t t-esc="report['年邀约完成']"/>波</td>
+                                    <td>完成比例</td><td><t t-esc="report['年邀约完成比例']"/>%</td>
+                                </tr>
+                                <tr>
+                                    <td>月签约目标</td><td><t t-esc="report['月签约目标']"/>万</td>
+                                    <td>月签约完成:</td><td><t t-esc="report['月签约完成']"/>万</td>
+                                    <td>完成比例</td><td><t t-esc="report['月签约完成比例']"/>%</td>
+                                </tr>
+                                <tr>
+                                    <td>月回款目标</td><td><t t-esc="report['月回款目标']"/>万</td>
+                                    <td>月回款完成:</td><td><t t-esc="report['月回款完成']"/>万</td>
+                                    <td>完成比例</td><td><t t-esc="report['月回款完成比例']"/>%</td>
+                                </tr>
+                                <tr>
+                                    <td>月邀约目标</td><td><t t-esc="report['月邀约目标']"/>波</td>
+                                    <td>月邀约完成:</td><td><t t-esc="report['月邀约完成']"/>波</td>
+                                    <td>完成比例</td><td><t t-esc="report['月邀约完成比例']"/>%</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

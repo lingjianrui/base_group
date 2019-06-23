@@ -1,0 +1,260 @@
+<odoo>
+    <data noupdate="0" >
+
+        <!--高级管理人员 -->
+        <record id="e00001" model="hr.employee">
+            <field name="name">丁一兵</field>
+            <field name="user_id" eval="ref('base_group.u00001')"/> 
+            <field name="department_id" eval="ref('base_group.40000')"/> 
+            <field name="job_id" eval="ref('base_group.80000')"/> 
+        </record>
+        <record id="e10001" model="hr.employee">
+            <field name="name">赵成斌</field>
+            <field name="user_id" eval="ref('base_group.u10001')"/> 
+            <field name="department_id" eval="ref('base_group.4001')"/> 
+            <field name="job_id" eval="ref('base_group.80001')"/> 
+            <field name="parent_id" eval="ref('base_group.e00001')"/> 
+        </record>
+
+        <!--市场信息部-->
+        <record id="e20002" model="hr.employee">
+            <field name="name">小韩</field>
+            <field name="user_id" eval="ref('base_group.u20002')"/> 
+            <field name="department_id" eval="ref('base_group.4000')"/> 
+            <field name="job_id" eval="ref('base_group.8004')"/> 
+        </record>
+        <record id="e20001" model="hr.employee">
+            <field name="name">郑文</field>
+            <field name="user_id" eval="ref('base_group.u20001')"/> 
+            <field name="department_id" eval="ref('base_group.4000')"/> 
+            <field name="job_id" eval="ref('base_group.8003')"/> 
+            <field name="parent_id" eval="ref('base_group.e00001')"/> 
+        </record>
+
+        <!--招商一部-->
+        <record id="e11001" model="hr.employee">
+            <field name="name">张弈</field>
+            <field name="user_id" eval="ref('base_group.u11001')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8002')"/> 
+            <field name="parent_id" eval="ref('base_group.e10001')"/> 
+            <field name="job_title">招商一部总监</field>
+        </record>
+        <record id="e11002" model="hr.employee">
+            <field name="name">高燃</field>
+            <field name="user_id" eval="ref('base_group.u11002')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="parent_id" eval="ref('base_group.e11001')"/>
+            <field name="job_title">招商一部助理</field> 
+        </record>
+        <record id="e11003" model="hr.employee">
+            <field name="name">余永群</field>
+            <field name="user_id" eval="ref('base_group.u11003')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e11004" model="hr.employee">
+            <field name="name">王志鹏</field>
+            <field name="user_id" eval="ref('base_group.u11004')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e11005" model="hr.employee">
+            <field name="name">林凡</field>
+            <field name="user_id" eval="ref('base_group.u11005')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e11006" model="hr.employee">
+            <field name="name">齐志富</field>
+            <field name="user_id" eval="ref('base_group.u11006')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+       </record>
+        <record id="e11007" model="hr.employee">
+            <field name="name">孙苗</field>
+            <field name="user_id" eval="ref('base_group.u11007')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e11008" model="hr.employee">
+            <field name="name">胡建超</field>
+            <field name="user_id" eval="ref('base_group.u11008')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e11009" model="hr.employee">
+            <field name="name">包森</field>
+            <field name="user_id" eval="ref('base_group.u11009')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e11010" model="hr.employee">
+            <field name="name">范龙</field>
+            <field name="user_id" eval="ref('base_group.u11010')"/> 
+            <field name="department_id" eval="ref('base_group.4002')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+
+
+        <!--招商二部-->
+        <record id="e12001" model="hr.employee">
+            <field name="name">沙春妮</field>
+            <field name="user_id" eval="ref('base_group.u12001')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8002')"/> 
+            <field name="job_title">招商二部总监</field> 
+            <field name="parent_id" eval="ref('base_group.e10001')"/>
+        </record>
+        <record id="e12002" model="hr.employee">
+            <field name="name">顾小双</field>
+            <field name="user_id" eval="ref('base_group.u12002')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商二部A组助理</field> 
+        </record>
+        <record id="e12003" model="hr.employee">
+            <field name="name">崔红</field>
+            <field name="user_id" eval="ref('base_group.u12003')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e12004" model="hr.employee">
+            <field name="name">施秀林</field>
+            <field name="user_id" eval="ref('base_group.u12004')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e12005" model="hr.employee">
+            <field name="name">贾红彦</field>
+            <field name="user_id" eval="ref('base_group.u12005')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商二部B组助理</field>
+        </record>
+        <record id="e12006" model="hr.employee">
+            <field name="name">关文梅</field>
+            <field name="user_id" eval="ref('base_group.u12006')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e12007" model="hr.employee">
+            <field name="name">布仁其木格</field>
+            <field name="user_id" eval="ref('base_group.u12007')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e12008" model="hr.employee">
+            <field name="name">姜波</field>
+            <field name="user_id" eval="ref('base_group.u12008')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e12009" model="hr.employee">
+            <field name="name">刘红岩</field>
+            <field name="user_id" eval="ref('base_group.u12009')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e12010" model="hr.employee">
+            <field name="name">石伟松</field>
+            <field name="user_id" eval="ref('base_group.u12010')"/> 
+            <field name="department_id" eval="ref('base_group.4003')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+
+        <!-- 招商三部 -->
+        <record id="e13001" model="hr.employee">
+            <field name="name">任荣荣</field>
+            <field name="user_id" eval="ref('base_group.u13001')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8002')"/> 
+            <field name="parent_id" eval="ref('base_group.e10001')"/>
+            <field name="job_title">招商三部总监</field>
+        </record>
+
+        <record id="e13002" model="hr.employee">
+            <field name="name">肖龙俊</field>
+            <field name="user_id" eval="ref('base_group.u13002')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商三部助理</field>
+        </record>
+
+        <record id="e13003" model="hr.employee">
+            <field name="name">何峰</field>
+            <field name="user_id" eval="ref('base_group.u13003')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+
+        <record id="e13004" model="hr.employee">
+            <field name="name">谭帅</field>
+            <field name="user_id" eval="ref('base_group.u13004')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+
+        <record id="e13005" model="hr.employee">
+            <field name="name">陈冉冉</field>
+            <field name="user_id" eval="ref('base_group.u13005')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e13006" model="hr.employee">
+            <field name="name">刘沛晨</field>
+            <field name="user_id" eval="ref('base_group.u13006')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e13007" model="hr.employee">
+            <field name="name">刘宝隆</field>
+            <field name="user_id" eval="ref('base_group.u13007')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e13008" model="hr.employee">
+            <field name="name">吴迪</field>
+            <field name="user_id" eval="ref('base_group.u13008')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e13009" model="hr.employee">
+            <field name="name">吴莹</field>
+            <field name="user_id" eval="ref('base_group.u13009')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+        <record id="e13010" model="hr.employee">
+            <field name="name">王朔</field>
+            <field name="user_id" eval="ref('base_group.u13010')"/> 
+            <field name="department_id" eval="ref('base_group.4004')"/> 
+            <field name="job_id" eval="ref('base_group.8001')"/> 
+            <field name="job_title">招商经理</field>
+        </record>
+
+    </data>
+</odoo>

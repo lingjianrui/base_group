@@ -1,0 +1,121 @@
+<odoo>
+    <data noupdate="0" >
+        <record id="u101" model="res.users">
+            <field name="name">小韩</field>
+            <field name="login">xiaohan@qq.com</field>
+            <field name="email">xiaohan@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('base_group.marketing_officer_group')])]"/>
+        </record>
+        <record id="u102" model="res.users">
+            <field name="name">郑文</field>
+            <field name="login">zhengwen@qq.com</field>
+            <field name="email">zhengwen@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('base_group.marketing_manager_group')])]"/>
+        </record>
+        <record id="u103" model="res.users">
+            <field name="name">张一</field>
+            <field name="login">zhangyi@qq.com</field>
+            <field name="email">zhangyi@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('sales_team.group_sale_salesman'),ref('base_group.sales_team_leader_group')])]"/>
+        </record>
+        <record id="u104" model="res.users">
+            <field name="name">高燃</field>
+            <field name="login">gaoran@qq.com</field>
+            <field name="email">gaoran@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'),ref('sales_team.group_sale_salesman'), ref('base_group.sales_team_leader_group')])]"/>
+        </record>
+        <record id="u105" model="res.users">
+            <field name="name">王志鹏</field>
+            <field name="login">wangzhipeng@qq.com</field>
+            <field name="email">wangzhipeng@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('sales_team.group_sale_salesman')])]"/>
+        </record>
+        <record id="u106" model="res.users">
+            <field name="name">林凡</field>
+            <field name="login">linfan@qq.com</field>
+            <field name="email">linfan@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('sales_team.group_sale_salesman')])]"/>
+        </record>
+        <record id="u107" model="res.users">
+            <field name="name">李蒙</field>
+            <field name="login">limeng@qq.com</field>
+            <field name="email">limeng@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('sales_team.group_sale_salesman')])]"/>
+        </record>
+        <record id="u108" model="res.users">
+            <field name="name">张凯</field>
+            <field name="login">zhangkai@qq.com</field>
+            <field name="email">zhangkai@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('sales_team.group_sale_salesman')])]"/>
+        </record>
+        <record id="u109" model="res.users">
+            <field name="name">王晶</field>
+            <field name="login">wangjing@qq.com</field>
+            <field name="email">wangjing@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'),ref('sales_team.group_sale_salesman') ])]"/>
+        </record>
+        <record id="u110" model="res.users">
+            <field name="name">郭小双</field>
+            <field name="login">guoxiaoshuang@qq.com</field>
+            <field name="email">guoxiaoshuang@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'),ref('sales_team.group_sale_salesman'),ref('base_group.sales_team_leader_group') ])]"/>
+        </record>
+        <record id="u111" model="res.users">
+            <field name="name">赵成斌</field>
+            <field name="login">zhaochengbin@qq.com</field>
+            <field name="email">zhaochengbin@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user')])]"/>
+        </record>
+        <record id="u112" model="res.users">
+            <field name="name">丁一兵</field>
+            <field name="login">dingyibing@qq.com</field>
+            <field name="email">dingyibing@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user')])]"/>
+        </record>
+        <record id="u113" model="res.users">
+            <field name="name">王鹏</field>
+            <field name="login">wangpeng@qq.com</field>
+            <field name="email">wangpeng@qq.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'),ref('sales_team.group_sale_salesman'),ref('base_group.sales_team_leader_group') ])]"/>
+        </record>
+        <record id="t1" model="crm.team">
+            <field name="name">招商一组一队</field>
+            <field name="use_opportunities">1</field>
+            <field name="use_leads">1</field>
+            <field name="member_ids" eval="[(6,0,[u103,u104,u105,u106])]"/>
+            <field name="user_id" eval="ref('base_group.u104')"/>
+            <field name="team_type">sales</field>
+        </record>
+        <record id="t2" model="crm.team">
+            <field name="name">招商二组一队</field>
+            <field name="use_opportunities">1</field>
+            <field name="use_leads">1</field>
+            <field name="member_ids" eval="[(6,0,[u107,u108])]"/>
+            <field name="user_id" eval="ref('base_group.u108')"/>
+            <field name="team_type">sales</field>
+        </record>
+        <record id="t3" model="crm.team">
+            <field name="name">招商二组二队</field>
+            <field name="use_opportunities">1</field>
+            <field name="use_leads">1</field>
+            <field name="member_ids" eval="[(6,0,[u109,u110])]"/>
+            <field name="user_id" eval="ref('base_group.u110')"/>
+            <field name="team_type">sales</field>
+        </record>
+
+
+    </data>
+</odoo>

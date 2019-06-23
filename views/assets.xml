@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="import_form_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/base_group/static/src/css/import_form.css"/>
+                <script type="text/javascript" src="/base_group/static/src/js/import_form.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>
+

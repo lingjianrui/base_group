@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.menu" id="base_group.menu_lead_duplicate">
+        <field name="name">显示重复</field>
+        <field name="groups_id" eval="[(4,ref('base_group.marketing_officer_group')),(4,ref('base_group.marketing_manager_group'))]"/>
+    </record>
+
+    <record model="ir.ui.view" id="base_group.view_lead_duplicate">
+        <field name="name">view_lead_duplicate</field>
+        <field name="model">lead.duplicate</field>
+        <field name="arch" type="xml">
+            <tree create="false" string="Duplicate Leads">
+                <field name="wname"/>
+                <field name="phone"/>
+                <field name="name"/>
+                <field name="uname"/>
+                <field name="opt_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="base_group.action_lead_duplicate">
+        <field name="name">查看重复</field>
+        <field name="res_model">lead.duplicate</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem name="显示重复" id="base_group.menu_lead_duplicate" action="base_group.action_lead_duplicate" parent="crm.crm_menu_config" sequence="0"/>
+
+</odoo>
+

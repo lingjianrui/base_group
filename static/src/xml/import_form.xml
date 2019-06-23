@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-call-assets="import_form_assets" t-js="false"/>
+    <t t-call-assets="import_form_assets" t-css="false"/>
+    <t t-name="ProductsWidget">
+        <t t-call="ControlPanel"/>
+        <div class="table-responsive" >
+            <table class="o_list_view table table-sm table-hover table-striped o_list_view_ungrouped">
+                <thead></thead>
+                <tbody class="ui-sortable">
+                    <t t-foreach="widget.products" t-as="product">
+                        <tr>
+                            <td class="o_data_cell">
+                                <t t-esc="product" />
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </t>
+</templates>

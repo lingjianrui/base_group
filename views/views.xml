@@ -1,0 +1,246 @@
+<odoo>
+    <data>
+        <!--让只有有 创建联系人权限的人才能看见联系人菜单-->
+        <record id="contacts.menu_contacts" model="ir.ui.menu">
+            <field name="groups_id" eval="[(3,ref('base.group_user'))]"/>
+        </record>
+
+        <!--不让所有内部用户都能看到 员工-->
+        <record id="hr.menu_hr_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(3,ref('base.group_user'))]"/>
+        </record>
+
+        <!--CRM根菜单控制增加两个新组 让信息部员工和信息部经理经理能看见CRM菜单-->
+        <record id="crm.crm_menu_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.sales_team_leader_group')),
+                (4,ref('sales_team.group_sale_manager')),
+                (4,ref('sales_team.group_sale_salesman')),
+                (4,ref('sales_team.group_sale_salesman_all_leads')),
+                (4,ref('base_group.marketing_officer_group')),
+                (4,ref('base_group.marketing_manager_group'))]"/>
+            <field name="action" ref="crm.crm_lead_all_leads"/>
+        </record>
+
+        <!--CRM菜单中的销售菜单只让销售人员看到-->
+        <record id="crm.crm_menu_sales" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.sales_team_leader_group')),
+                (4,ref('sales_team.group_sale_salesman')),
+                (4,ref('sales_team.group_sale_salesman_all_leads')),
+                (4,ref('sales_team.group_sale_manager'))]"/>
+        </record>
+
+        <!--让销售领导可以看见漏斗报告菜单-->
+        <record id="crm.crm_opportunity_report_menu" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.sales_team_leader_group'))]"/>
+        </record>
+        <record id="crm.crm_menu_report" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.sales_team_leader_group')),(4,ref('base_group.marketing_manager_group'))]"/>
+        </record>
+        <!--
+        <record id="base_group.menu_opportunity_report" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.sales_team_leader_group')),(4,ref('base_group.sales_vp_group')),(4,ref('base_group.ceo_group'))]"/>
+        </record>
+        <record id="base_group.menu_lead_report" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.sales_team_leader_group')),(4,ref('base_group.sales_vp_group')),(4,ref('base_group.ceo_group'))]"/>
+        </record>
+        -->
+
+        <!--CRM菜单-配置-销售团队-->
+        <record id="crm.crm_team_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('sales_team.group_sale_manager'))]"/>
+        </record>
+        <!--CRM菜单-配置-活动类型-->
+        <record id="crm.crm_team_menu_config_activity_types" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('sales_team.group_sale_manager'))]"/>
+        </record>
+        <!--漏斗菜单只能让销售人员看到 -->
+        <record id="crm.menu_crm_opportunities" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.sales_team_leader_group')),
+                (4,ref('sales_team.group_sale_salesman')),
+                (4,ref('sales_team.group_sale_salesman_all_leads')),
+                (4,ref('sales_team.group_sale_manager'))]"/>
+        </record>
+        <!--转换商机按钮只能让销售人员使用,额外的定制化了一下线索form表单-->
+        <record id="view_crm_lead_form_inherit" model="ir.ui.view" >
+            <field name="name">crm.lead.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">     
+
+                <xpath expr="//button[@name='%(crm.action_crm_lead2opportunity_partner)d']" position="attributes">
+                    <attribute name="groups">sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_set_lost']" position="attributes">
+                    <attribute name="groups">sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager</attribute>
+                </xpath>
+                <xpath expr="//div[@class='o_address_format']" position="replace"/>
+                <xpath expr="//label[@for='street']" position="replace"/>
+                <xpath expr="//field[@name='is_blacklisted']/.." position="replace"/>
+                <field name="partner_name" position="replace"/>
+                <field name="partner_id" position="replace"/>
+                <xpath expr="//field[@name='website']" position="after">
+                    <label for="contact_name"/>
+                    <div class="o_row">
+                        <field name="contact_name"/>
+                        <field name="title" placeholder="职位称呼" domain="[]" options="{&quot;no_open&quot;: True}"/>
+                    </div>
+                    <field name="phone" widget="phone" attrs="{'invisible':[('is_same_user','=',True)]}" />
+                    <field name="source_id"/>
+                    <field name="is_same_user" invisible="True"/>
+                    <field name="dispatch_date"/>
+                </xpath>
+                <field name="team_id" position="replace">
+                    <field name="team_id"  readonly="1" />
+                    <field name="depart_id"  readonly="1" />
+                    <field name="batch_id" readonly="1" />
+                </field>
+                <field name="website" position="replace"/>
+            </field>
+        </record> 
+        <record id="view_crm_oppr_form_inherit" model="ir.ui.view" >
+            <field name="name">crm.oppr.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">     
+                <field name="partner_address_phone" position="attributes">
+                    <attribute name="invisible">[('is_same_user','=',True)]</attribute>
+                </field>
+            </field>
+        </record> 
+
+        <!--定制化了一下线索的列表需要显示的字段 -->
+        <record id="view_crm_lead_tree_inherit" model="ir.ui.view" >
+            <field name="name">crm.lead.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="arch" type="xml">
+                <field name="create_date" position="replace"/>
+
+                <field name="name" position="before">
+                    <field name="user_id"/>
+                </field>
+                <field name="name" position="after">
+                    <field name="dispatch_date"/>
+                </field>
+            <field name="phone" position="attributes">
+                <attribute name="invisible">[('is_same_user','=',True)]</attribute> 
+            </field>
+                <field name="city" position="replace"/>
+                <field name="country_id" position="replace"/>
+                <field name="email_from" position="replace"/>
+                <field name="team_id" position="after">
+                    <field name="create_date"/>
+                </field>
+            </field>
+        </record>
+        <!--系统用户界面上显示 员工关联信息 -->
+        <record id="view_users_form_inherit" model="ir.ui.view">
+            <field name="name">res.users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_title']/group" position="inside">
+                    <field name="employee_id" readonly="1" required="0" groups="base.group_no_one"
+                                        attrs="{'invisible': [('id', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- 销售部门 -->
+        <record id="view_crm_depart_tree" model="ir.ui.view" >
+            <field name="name">view_crm_depart_tree</field>
+            <field name="model">crm.depart</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="year_target"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_crm_depart_form" model="ir.ui.view" >
+            <field name="name">view_crm_depart_form</field>
+            <field name="model">crm.depart</field>
+            <field name="arch" type="xml">
+                <form string="部门设置">
+                    <group>
+                        <field name="name"/>
+                        <field name="year_target"/>
+                        <field name="year_back_target"/>
+                        <field name="year_invite_target"/>
+                        <field name="month_target"/>
+                        <field name="month_back_target"/>
+                        <field name="month_invite_target"/>
+                        <field name="user_id"/>
+                        <field name="team_ids"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+        <record id="base_group.action_crm_depart" model="ir.actions.act_window">
+            <field name="name">action_crm_depart</field>
+            <field name="res_model">crm.depart</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="销售部门" id="base_group.menu_crm_depart" action="base_group.action_crm_depart" parent="crm.crm_menu_config" sequence="0"/>
+
+        <record id="view_crm_team_inherit" model="ir.ui.view" >
+            <field name="name">crm_team_inherit</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="arch" type="xml">
+                    <field name="user_id" position="after">
+                        <field name="depart_id" />
+                    </field>
+            </field>    
+        </record>
+        <!--lead 视图定制化  
+        <record id="view_crm_opportunity_report_view_graph_lead_inherit" model="ir.ui.view" >
+            <field name="name">crm_opportunity_report_view_graph_lead_inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_opportunity_report_view_graph_lead"/>
+            <field name="arch" type="xml">
+                    <field name="" position="after">
+                        <field name="depart_id" />
+                    </field>
+            </field>    
+        </record>
+        -->
+        <!--给讨论app设置权限组只有show_all_app这个组的用户才可以看见，删除内部用户这个
+        <record id="mail.menu_root_discuss" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.show_chatter_app')),(3,ref('base.group_user'))]"/>
+        </record>
+        -->
+
+        <!--将员工menu 也设置只有show_all_app组才能看
+        <record id="hr.menu_hr_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.show_employee_app')),(3,ref('base.group_user')),(3,ref('hr.group_hr_user')),(3,ref('hr.group_hr_manager'))]"/>
+        </record>
+        -->
+
+        <!--不显示网站
+        <record id="website.menu_website_configuration" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base_group.show_website_app')),(3,ref('base.group_user')),(3,ref('hr.group_hr_user')),(3,ref('hr.group_hr_manager'))]"/>
+        </record>
+        -->
+
+        <!--去掉创建联系人视图中的公司类型
+        <record id="view_res_partner_form_inherit" model="ir.ui.view" >
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">     
+                <field name="company_type" position="replace"/>
+            </field>
+        </record> 
+        -->
+        <!--创建一个点击按钮的动作传默认值给view 让 is_company=True
+             隐藏掉公司关联选项
+        <record id="contacts.action_contacts" model="ir.actions.act_window">
+            <field name="name">override create action</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{'default_is_company':True}</field>
+        </record>
+        -->
+    </data>
+</odoo>

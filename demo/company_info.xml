@@ -1,0 +1,15 @@
+<odoo>
+    <data noupdate="0">
+        <record id="base.main_company" model="res.company">
+            <field name="name">东方幸福北京国际企业管理有限公司</field>
+            <field name="logo" type="base64" file="base_group/static/img/logo.png"/>
+            <field name="currency_id" ref="base.CNY"/>
+            <field name="street">北京亦庄经济开发区</field>
+            <field name="street2">经海三路109号天翼智谷5A号楼2楼</field>
+            <field name="city">北京</field>
+            <field name="website">http://www.dongfangxingfu.com</field>
+            <field name="vat">91110302MA018PTL6F</field>
+            <field name="phone">18610861161</field>
+        </record>
+    </data>
+</odoo>

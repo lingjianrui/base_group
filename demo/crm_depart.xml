@@ -1,0 +1,43 @@
+<odoo>
+    <data noupdate="1">
+    <record id="ed1" model="crm.depart">
+        <field name="name">招商一部</field>
+        <field name="user_id" eval="ref('base_group.u11001')"/> 
+	</record>
+	<record id="ed2" model="crm.depart">
+	    <field name="name">招商二部</field>
+        <field name="user_id" eval="ref('base_group.u12001')"/> 
+	</record>
+    <record id="ed3" model="crm.depart">
+	    <field name="name">招商三部</field>
+        <field name="user_id" eval="ref('base_group.u13001')"/> 
+	</record>
+
+	<!--  -->
+	<!--   <record id="object0" model="base_group.base_group"> -->
+	    <!--     <field name="name">Object 0</field> -->
+	    <!--     <field name="value">0</field> -->
+	    <!--   </record> -->
+	<!--  -->
+	<!--   <record id="object1" model="base_group.base_group"> -->
+	    <!--     <field name="name">Object 1</field> -->
+	    <!--     <field name="value">10</field> -->
+	    <!--   </record> -->
+	<!--  -->
+	<!--   <record id="object2" model="base_group.base_group"> -->
+	    <!--     <field name="name">Object 2</field> -->
+	    <!--     <field name="value">20</field> -->
+	    <!--   </record> -->
+	<!--  -->
+	<!--   <record id="object3" model="base_group.base_group"> -->
+	    <!--     <field name="name">Object 3</field> -->
+	    <!--     <field name="value">30</field> -->
+	    <!--   </record> -->
+	<!--  -->
+	<!--   <record id="object4" model="base_group.base_group"> -->
+	    <!--     <field name="name">Object 4</field> -->
+	    <!--     <field name="value">40</field> -->
+	    <!--   </record> -->
+	<!--  -->
+    </data>
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!--删除内部用户冲突的规则-->
+        <record model="ir.rule" id="base.res_partner_rule_private_employee">
+            <field name="active">False</field>
+        </record> 
+        <!--增加新的规则只允许销售看到自己的联系人 -->
+        <record model="ir.rule" id="rule_res_partner_ext">
+            <field name="name">res.partner销售代表规则</field>
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="groups" eval="[(6,0, [ref('base_group.onlyshow_self_contacts')])]"/>
+            <field name="domain_force">['|','|',('user_id','=',user.id),('id','=',user.partner_id.id),('user_id','=',False)]</field>
+        </record>
+        <!--增加新的规则允许管理员看见所有的联系人 -->
+        <record model="ir.rule" id="rule_res_partner_manager">
+            <field name="name">res.partner销售经理规则</field>
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="groups" eval="[(6,0, [ref('sales_team.group_sale_manager'),ref('sales_team.group_sale_salesman_all_leads')])]"/>
+            <field name="domain_force">
+                [(1,'=',1)]
+            </field>
+        </record>
+        <!--小组leader可以看到组里所有的线索-->
+        <record model="ir.rule" id="rule_team_leader">
+            <field name="name">招商组助理</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="domain_force">[('team_id.member_ids','in', [user.id])]</field>
+            <field name="groups" eval="[(4, ref('base_group.sales_team_assistant_group'))]"/>
+        </record>
+        <!--招商部副总可以看到所有的线索-->
+        <record model="ir.rule" id="rule_sales_vp">
+            <field name="name">招商部副总</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('base_group.sales_vp_group'))]"/>
+        </record>
+        <!--招商部总监可以看到自己组内线索信息-->
+        <record model="ir.rule" id="rule_department_leader">
+            <field name="name">招商部总监</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <!--<field name="domain_force">[('department_id.member_ids','in', [user.employee_id.id])]</field>-->
+                <field name="domain_force">[('depart_id.team_ids','in', [user.sale_team_id.id])]</field>
+            <field name="groups" eval="[(4, ref('base_group.sales_team_leader_group'))]"/>
+        </record>
+        <!--董事长可以看到所有的线索-->
+        <record model="ir.rule" id="rule_lead_ceo">
+            <field name="name">董事长</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('base_group.ceo_group'))]"/>
+        </record>
+        <!--董事长可以看到所有的客户-->
+        <record model="ir.rule" id="rule_parnter_ceo">
+            <field name="name">董事长</field>
+            <field name="model_id" ref="crm.model_res_partner"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('base_group.ceo_group'))]"/>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <record model="ir.module.category" id="base.module_category_sales_management">
+            <field name="visible" eval="0" />
+        </record>
+        <record id="onlyshow_self_contacts" model="res.groups">
+            <field name="name">只显示自己的联系人</field>
+            <field name="comment">只显示自己的联系人</field>
+            <field name="category_id" ref="base.module_category_sales_management"/>
+        </record>
+        <record model="ir.module.category" id="module_category_dfxf">
+            <field name="name">东方幸福</field>
+            <field name="description">东方幸福</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record model="ir.module.category" id="module_category_dfxf_sales">
+            <field name="name">招商部</field>
+            <field name="parent_id" ref="base_group.module_category_dfxf"/>
+            <field name="description">东方幸福招商部</field>
+            <field name="sequence">2</field>
+        </record>
+         <record model="ir.module.category" id="module_category_dfxf_marketing">
+            <field name="name">市场信息部</field>
+            <field name="parent_id" ref="base_group.module_category_dfxf"/>
+            <field name="description">东方幸福市场信息部</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="mo_group" model="res.groups">
+            <field name="name">监事</field>
+            <field name="comment">监事权限</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+            <field name="category_id" ref="base_group.module_category_dfxf"/>
+        </record>
+        <record id="marketing_manager_group" model="res.groups">
+            <field name="name">信息部经理</field>
+            <field name="comment">信息部经理权限</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+            <field name="category_id" ref="base_group.module_category_dfxf_marketing"/>
+        </record>
+        <record id="marketing_officer_group" model="res.groups">
+            <field name="name">信息部员工</field>
+            <field name="comment">信息部员工权限</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+            <field name="category_id" ref="base_group.module_category_dfxf_marketing"/>
+        </record>
+        <record id="sales_team_assistant_group" model="res.groups">
+            <field name="name">招商部组助理</field>
+            <field name="comment">招商部小组助理权限</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user')),(4, ref('sales_team.group_sale_salesman')),(4,ref('base_group.onlyshow_self_contacts'))]"/>
+            <field name="category_id" ref="base_group.module_category_dfxf_sales"/>
+        </record>
+        <record id="sales_team_leader_group" model="res.groups">
+            <field name="name">招商部组总监</field>
+            <field name="comment">招商部小组总监权限</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user')),(4, ref('sales_team.group_sale_salesman')),(4,ref('base_group.onlyshow_self_contacts'))]"/>
+            <field name="category_id" ref="base_group.module_category_dfxf_sales"/>
+        </record>
+        <record id="sales_team_member_group" model="res.groups">
+            <field name="name">招商部组成员</field>
+            <field name="comment">招商经理权限</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user')),(4, ref('sales_team.group_sale_salesman')),(4,ref('base_group.onlyshow_self_contacts'))]"/>
+            <field name="category_id" ref="base_group.module_category_dfxf_sales"/>
+        </record>
+        <record id="sales_vp_group" model="res.groups">
+            <field name="name">招商部副总</field>
+            <field name="comment">招商部副总权限</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user')),(4,ref('base_group.sales_team_leader_group'))]"/>
+            <field name="category_id" ref="base_group.module_category_dfxf_sales"/>
+        </record>
+        <record id="ceo_group" model="res.groups">
+            <field name="name">董事长</field>
+            <field name="comment">董事长/CEO 权限</field>
+            <field name="category_id" ref="base_group.module_category_dfxf"/>
+            <field name="implied_ids" eval="[(4,ref('base_group.sales_vp_group'))]"/>
+        </record>
+        <!--
+        <record id="show_chatter_app" model="res.groups">
+            <field name="name">显示讨论</field>
+            <field name="comment">显示讨论app菜单</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+        -->
+        <!--
+        <record id="show_employee_app" model="res.groups">
+            <field name="name">显示员工</field>
+            <field name="comment">显示员工app菜单</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+        -->
+        <!--
+        <record id="show_website_app" model="res.groups">
+            <field name="name">显示网站</field>
+            <field name="comment">显示网站app菜单</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+        --> 
+
+    </data>
+</openerp>

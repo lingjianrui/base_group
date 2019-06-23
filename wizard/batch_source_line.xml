@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="base_group.view_batch_source_line_tree">
+        <field name="name">view_batch_source_line_tree</field>
+        <field name="model">batch.source.line</field>
+        <field name="arch" type="xml">
+            <tree string="Batch Source">
+                <field name="source_id"/>
+                <field name="source_cost"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="base_group.view_batch_source_line_form">
+        <field name="name">view_batch_source_line_form</field>
+        <field name="model">batch.source.line</field>
+        <field name="arch" type="xml">
+            <form string="Batch Source Form">
+                    <sheet>
+                        <group>
+                            <field name="source_id"/>
+                            <field name="source_cost"/>
+                        </group>
+                    </sheet>
+                </form>     
+        </field>
+    </record>
+
+</odoo>
+

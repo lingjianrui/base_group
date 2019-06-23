@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <template id="template_lead_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page" style="padding:100 100 0 0">
+                        <div class="oe_structure"/>
+                        <table  class="table table-sm" style="border-bottom: 0px solid white !important;">
+                            <thead>
+                                <tr>
+                                    <th>部门</th>
+                                    <th>总条数</th>
+                                    <th>有效条数</th>
+                                    <th>有效率</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                <tr t-foreach="alead" t-as="lead">
+                                    <th><t t-esc="lead['depart_id'][1]"/></th>
+                                    <th><t t-esc="lead['depart_id_count']"/></th>
+                                    <th><t t-esc="lead['valid_count']"/></th>
+                                    <th><t t-esc="lead['valid_count_percentage']"/></th>
+                                </tr>
+                                <tr>
+                                    <th>汇总</th>
+                                    <th><t t-esc="总条数"/></th>
+                                    <th><t t-esc="有效总条数"/></th>
+                                    <th><t t-esc="汇总百分比"/></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table  class="table table-sm" style="border-bottom: 0px solid white !important;">
+                            <thead>
+                                <tr>
+                                    <th>批次</th>
+                                    <th>条数</th>
+                                    <th>花费</th>
+                                    <th>成本</th>
+                                    <th>资源</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="单批次线索分组" t-as="source">
+                                    <td>1</td>
+                                    <td><t t-esc="source['source_id_count']"/></td>
+                                    <td><t t-esc="单批次['batch_cost']"/></td>
+                                    <td><t t-esc="单批次平均每条成本"/></td>
+                                    <td><t t-esc="source['source_id'][1]"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

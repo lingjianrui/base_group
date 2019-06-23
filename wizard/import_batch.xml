@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.menu" id="base_group.menu_import_batch">
+        <field name="name">导入批次</field>
+        <field name="groups_id" eval="[(4,ref('base_group.marketing_manager_group')),(4,ref('base.group_system'))]"/>
+    </record>
+
+
+    <record model="ir.ui.view" id="base_group.view_import_batch_tree">
+        <field name="name">view_import_batch_tree</field>
+        <field name="model">import.batch</field>
+        <field name="arch" type="xml">
+            <tree string="Import Batch">
+                <field name="batch_no"/>
+                <field name="batch_cost" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="base_group.view_import_batch_form">
+        <field name="name">view_import_batch_form</field>
+        <field name="model">import.batch</field>
+        <field name="arch" type="xml">
+            <form string="Batch Form">
+                    <sheet>
+                        <group>
+                            <field name="batch_no"/>
+                            <field name="batch_cost" class="oe_read_only"/>
+                            <field name="batch_source_id">
+                                <tree string="Batch Source Tree">
+                                    <field name="source_id" />
+                                    <field name="source_cost" />
+                                </tree>
+                                <form string="Batch Source Form" version="12.0">
+                                    <sheet>
+                                        <group>
+                                            <field name="source_id" />
+                                            <field name="source_cost" />
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>     
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="base_group.action_import_batch">
+        <field name="name">导入批次</field>
+        <field name="res_model">import.batch</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem name="导入批次" id="base_group.menu_import_batch" action="base_group.action_import_batch"  parent="crm.crm_menu_config" sequence="99"/>
+
+</odoo>
+

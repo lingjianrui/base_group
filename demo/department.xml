@@ -1,0 +1,28 @@
+<odoo>
+    <data noupdate="1" >
+        <record id="40000" model="hr.department">
+            <field name="name">东方幸福</field>
+        </record>
+        <record id="4000" model="hr.department">
+            <field name="name">信息部</field>
+            <field name="parent_id" eval="ref('base_group.40000')"/>
+        </record>
+        <record id="4001" model="hr.department">
+            <field name="name">招商部</field>
+            <field name="parent_id" eval="ref('base_group.40000')"/>
+        </record>
+        <record id="4002" model="hr.department">
+            <field name="name">招商一部</field>
+            <field name="parent_id" eval="ref('base_group.4001')"/>
+        </record>
+        <record id="4003" model="hr.department">
+            <field name="name">招商二部</field>
+            <field name="parent_id" eval="ref('base_group.4001')"/>
+        </record>
+        <record id="4004" model="hr.department">
+            <field name="name">招商三部</field>
+            <field name="parent_id" eval="ref('base_group.4001')"/>
+        </record>
+ 
+    </data>
+</odoo>

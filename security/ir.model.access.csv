@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_lead_user,crm.lead user,crm.model_crm_lead,base_group.marketing_officer_group,1,1,1,1
+access_crm_lead_manager,crm.lead manager,crm.model_crm_lead,base_group.marketing_manager_group,1,1,1,1
+crm.access_crm_lead,crm.lead user write,crm.model_crm_lead,sales_team.group_sale_salesman,1,1,0,0
+access_crm_lead_ceo,crm.lead ceo,crm.model_crm_lead,base_group.ceo_group,1,1,1,1
+access_res_partner_ceo,res.partner ceo,crm.model_res_partner,base_group.ceo_group,1,1,1,1
+access_crm_depart_vp,crm.depart vp,base_group.model_crm_depart,sales_team.group_sale_manager,1,1,1,1
+access_crm_depart_manager,crm.depart manager,base_group.model_crm_depart,base_group.sales_team_leader_group,1,1,1,1
+access_import_batch_manager,import.batch manager,base_group.model_import_batch,base_group.marketing_manager_group,1,1,1,1
+access_import_batch_user,import.batch user,base_group.model_import_batch,base_group.marketing_officer_group,1,0,0,0
+access_lead_report_user,lead_report user,base_group.model_lead_report_wizard,base_group.marketing_manager_group,1,1,1,1
+access_batch_source_manager,batch_source manager,base_group.model_batch_source,base_group.marketing_manager_group,1,1,1,1
+
