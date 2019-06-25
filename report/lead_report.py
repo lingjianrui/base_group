@@ -22,7 +22,7 @@ class lead_report(models.AbstractModel):
         print(批次对象.batch_source_id.mapped('source_id'))
         for k in 批次对象.batch_source_id.mapped('source_id'):
             分组 = filter(lambda r: r['source_id'][0] == k.id,单批次线索分组)
-            print(list(分组))
+            print(list(分组)[0]['source_id_count'])
         单批次 = self.env['import.batch'].search([('id','=',批次)])
         单批次预算 = 单批次['batch_cost']
         单批次平均每条成本 = float(单批次预算)/float(len(单批次所有线索))
