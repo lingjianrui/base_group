@@ -8,7 +8,7 @@
         <field name="groups_id" eval="[(4,ref('base_group.marketing_officer_group')),(4,ref('base_group.marketing_manager_group'))]"/>
     </record>
 
-    <record model="ir.ui.view" id="base_group.view_import_wizard">
+    <record model="ir.ui.view" id="base_group.view_excel_import_wizard">
         <field name="name">view_import_wizard</field>
         <field name="model">excel.import.wizard</field>
         <field name="type">form</field>
