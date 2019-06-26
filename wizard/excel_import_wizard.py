@@ -4,14 +4,12 @@ from odoo import api, fields, models, registry, _
 import time
 import traceback
 from xmlrpc import client
-import redis
 import pdb
 class ExcelImportWizard(models.TransientModel):
     _name = 'excel.import.wizard'
 
     _inherit = ['odo.base.import.excel.wizard']
     _description = '基本信息导入向导'
-    r = redis.Redis(host='localhost', port=6379, decode_responses=True)
     def process_import_item(self, item, a):
         print(a)
         #pdb.set_trace()
@@ -51,7 +49,6 @@ class ExcelImportWizard(models.TransientModel):
                 if not obj2:
                     value['phone'] = 主键
                     obj.create(value)
-                    #self.r.lpush("datalist",str(list(value.values())))
         except Exception as e:
             msg = traceback.format_exc()
             print(msg)
